@@ -1,0 +1,23 @@
+<h2 class="title_center">로그인</h2>
+    <div class="login_container">
+<div class="login">
+	<form action="" method="post">
+		{% csrf_token %}
+		<input type="hidden" name="post_type" value="login">
+        <div>
+		{% for field in login_form %}
+				{{ field }}
+				{% if field.errors %}
+					{% for error in field.errors %}
+					<span class="help-block">{{ error }}</span>
+					{% endfor %}
+				{% endif %}
+			</div>
+		{% endfor %}
+
+		{% if login_form.non_field_errors %}
+			{% for error in login_form.non_field_errors %}
+			<p class="error_message"><b>{{ error }}</b></p>
+			{% endfor %}
+		{% endif %}
+        <button type="submit" class="submit">로그인</button>

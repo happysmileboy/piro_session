@@ -1,0 +1,66 @@
+<div id="main">
+
+  <div class="signup_page wrap">
+
+
+    <!-- Signup  -->
+    <div id="signup">
+      <h2 class="title_center">회원가입</h2>
+      <form id="signup_form" action="" method="post" onsubmit="return validation()" name="signup">
+        {%  csrf_token %}
+        <input type="hidden" name="post_type" value="signup">
+        <div class="container">
+          <p class="container_title">입력해주세요</p>
+          <!-- User Name Start -->
+         <span id="name_error" class="error_message"> </span>
+          <div class="tooltip">
+            <input id="name" name="name" type="text" placeholder="이름" maxlength="20" class="input_default" value="">
+          </div>
+          <!-- User Name End -->
+          <!-- E-mail Start -->
+
+          <span id="email_error" class="error_message"> </span>
+          <div class="tooltip">
+            <input id="email" name="email" type="email" placeholder="이메일 (추후 로그인 아이디로 사용)" maxlength="100" class="input_default" value="">
+          </div>
+          <!-- E-mail End -->
+          <!-- Password start -->
+
+          <p id="error_password_len" class="error_message " style="display: none">비밀번호를 6자 이상 입력해주세요.</p>
+          <div class="tooltip">
+             <span id="password_error" class="error_message"> </span>
+            <input id="password" name="password" type="password" placeholder="비밀번호" maxlength="30" class="input_default" value="">
+          </div>
+          <!-- Password End -->
+        </div>
+          <button type="submit" id="button_signup" class="button_next">회원가입</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+		function validation(){
+			var name = document.getElementById('name').value;
+			var password = document.getElementById('password').value;
+			var email = document.getElementById('email').value;
+
+			if((name.length <= 2) || (name == "" ) || ((!isNaN(name)))) {
+				document.getElementById('name_error').innerHTML =" 이름을 2글자 이상 입력해주세요.";
+				return false;
+			}
+
+			if(email == "") {
+				document.getElementById('email_error').innerHTML =" 이메일 형식이 올바르지 않습니다.";
+				return false;
+			}
+
+			if((password.length <= 6) || (password == "")) {
+				document.getElementById('password_error').innerHTML =" 비밀번호를 6자 이상 입력해주세요.";
+				return false;
+			}
+        }
+
+
+	</script>

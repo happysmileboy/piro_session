@@ -1,0 +1,8 @@
+{% load static %}
+{{ request.user }}
+<br/>
+<a href="{% url "accounts:login" %}">로그인페이지</a>
+<a href="{% url "accounts:logout" %}">로그아웃</a>
+<a href="{% url "accounts:signup" %}">회원가입페이지</a>
+<a href="{% url "core:byfunc" %}">함수형인증처리</a>
+<a href="{% url "core:byhtml" %}">장고템플릿언어 인증처리</a>

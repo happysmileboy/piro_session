@@ -1,0 +1,7 @@
+{% if user.emailconfirm.is_confirmed %}
+  <h1>인증된 회원입니다</h1>
+  <a href="{% url 'core:base' %}">홈화면</a>
+{% else %}
+  <h1>인증을 해야 게시글을 확인할 수 있습니다.</h1>
+  <a href="{% url 'core:base' %}">홈화면</a>
+{% endif %}
